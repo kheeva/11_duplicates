@@ -14,8 +14,8 @@ def has_duplicate(name, size):
 
 def seek_duplicates_in_dir(scanning_dir):
     list_of_dirs = []
-    with os.scandir(scanning_dir) as it:
-        for entry in it:
+    with os.scandir(scanning_dir) as file_or_dir:
+        for entry in file_or_dir:
             if not entry.name.startswith('.') and entry.is_file():
                 if has_duplicate(entry.name, entry.stat().st_size):
                     print('Found the duplicate: ', entry.path)
@@ -35,8 +35,8 @@ def main():
             new_dirs = []
             if not scanning_dir:
                 break
-            for i in scanning_dir:
-                new_dir = seek_duplicates_in_dir(i)
+            for directory in scanning_dir:
+                new_dir = seek_duplicates_in_dir(directory)
                 if new_dir:
                     new_dirs.extend(new_dir)
             scanning_dir = new_dirs

@@ -6,8 +6,8 @@ import sys
 scanned_files = {}
 
 
-def has_duplicate(name, size):
-    if [name, size] in scanned_files.values():
+def has_duplicate(filename, size):
+    if [filename, size] in scanned_files.values():
         return True
     return False
 

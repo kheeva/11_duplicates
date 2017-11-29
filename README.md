@@ -1,5 +1,5 @@
 # Anti-Duplicator
-Program recursively seeks duplicated files in certain folder and prints result in console.
+The program recursively seeks duplicated files in a folder and prints result in console.
 
 # How to Install
 You just need to download and install python3 if you already haven't: http://python.org .
@@ -9,6 +9,7 @@ Seeking duplicates in oleg's home directory:
 
 ```
 python duplicates.py /home/oleg
+Found a duplicate /home/oleg/duplicates/README.md!
 ```
 
 # Project Goals

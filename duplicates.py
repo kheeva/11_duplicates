@@ -24,17 +24,17 @@ def find_files_and_dirs(scanning_dir, files_dictionary):
 
 def output_duplicates(found_files):
     groups_of_duplicates = filter(lambda x: len(x) > 1, found_files.values())
-    for file_group in groups_of_duplicates:
+    for duplicates_group in groups_of_duplicates:
         print('\r')
-        for file in file_group:
-            print(file)
+        for duplicate in duplicates_group:
+            print(duplicate)
 
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
         exit("Usage: python duplicates.py path_to_scanning_dir")
 
-    found_files_dict = {}
+    files_dict = {}
     scanning_dirs = [sys.argv[1]]
     while True:
         subdirectories = []
@@ -43,12 +43,11 @@ if __name__ == '__main__':
             break
 
         for directory in scanning_dirs:
-            found_dirs, files_dict = find_files_and_dirs(directory,
-                                                         found_files_dict)
+            found_dirs, files_dict = find_files_and_dirs(directory, files_dict)
             if found_dirs:
                 subdirectories.extend(found_dirs)
 
         scanning_dirs = subdirectories
 
     print('\nThere is the list of found duplicates:')
-    output_duplicates(found_files_dict)
+    output_duplicates(files_dict)
